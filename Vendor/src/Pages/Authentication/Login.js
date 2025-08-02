@@ -47,9 +47,14 @@ const Login = () => {
       callback: getLogging,
       payload: values,
       onSuccess: ({ tokens, user }) => {
-        localStorage.setItem("accessToken", tokens?.access?.token);
-        localStorage.setItem("user", JSON.stringify(user));
-        navigate("/");
+        if (user.role === "vendor") {
+          localStorage.setItem("accessToken", tokens?.access?.token);
+          localStorage.setItem("user", JSON.stringify(user));
+          navigate("/");
+        } else {
+          setErrors({ general: "Only vendors are allowed to login." });
+          setSubmitting(false);
+        }
       },
       onError: (error) => {
         setErrors({ general: "Incorrect email or password" });
