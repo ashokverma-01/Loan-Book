@@ -1,0 +1,17 @@
+// _modal.scss
+.modal {
+  --bs-modal-width: 700px;
+}
+
+.modal-dialog {
+  max-width: 800px;
+  max-height: 90vh;
+}
+
+.modal-content {
+  height: 100%;
+}
+.required::after {
+  content: " *"; 
+  color: red; 
+}
